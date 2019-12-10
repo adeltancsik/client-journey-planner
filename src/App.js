@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { Route } from "react-router-dom";
 import "./App.css";
 import Home from "./components/Home";
+import SignupFormContainer from "./components/SignupFormContainer";
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
         <div className="App">
           <div className="appdiv">
             <Route path="/" component={Home} />
+            <Route path="/signup" component={SignupFormContainer} />
           </div>
         </div>
       </Provider>
