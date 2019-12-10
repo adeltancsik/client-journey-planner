@@ -1,9 +1,9 @@
 import { TODOS_FETCHED, TODO_CREATE_SUCCESS } from "../actions/todos";
 
-export default (state = null, action = {}) => {
+export default (state = [], action = {}) => {
   switch (action.type) {
     case TODOS_FETCHED:
-      return action.payload;
+      return [...action.payload];
     case TODO_CREATE_SUCCESS:
       return [...state, { ...action.payload }];
     default:

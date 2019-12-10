@@ -10,8 +10,12 @@ const journeysFetched = journeys => ({
   payload: journeys
 });
 
-export const loadJourneys = () => dispatch => {
+export const loadJourneys = () => (dispatch, getState) => {
+  const state = getState();
+  const { user } = state;
+
   request(`${baseUrl}/journeys`)
+    .set("Authorization", `Bearer ${user}`)
     .then(response => {
       dispatch(journeysFetched(response.body));
     })

@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardDeck } from "react-bootstrap";
 import moment from "moment";
+import { useDispatch, useSelector } from "react-redux";
+import { loadJourneys } from "../actions/journeys";
 // import "./styling/EventList.css";
 
-export default function JourneyList(props) {
+export default function JourneyList() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadJourneys());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const journeys = useSelector(state => state.journeys);
+
   return (
     <main>
-      {!props.journeys ? (
+      {!journeys ? (
         "Loading..."
       ) : (
         <div
@@ -17,7 +28,7 @@ export default function JourneyList(props) {
           }}
         >
           <CardDeck className="container">
-            {props.journeys.map(journey => {
+            {journeys.map(journey => {
               const date = moment(journey.startDate, "YYYY-MM-DD").fromNow();
               return (
                 <Card
