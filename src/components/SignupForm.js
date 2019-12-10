@@ -14,8 +14,8 @@ export default function SignupForm(props) {
                 type="email"
                 placeholder="Enter email"
                 name="email"
-                value={props.values.email}
-                onChange={props.onChange}
+                value={props.email}
+                onChange={props.handleEmailInput}
               />
             </Col>
           </Form.Group>
@@ -25,8 +25,8 @@ export default function SignupForm(props) {
                 type="password"
                 placeholder="Password"
                 name="password"
-                value={props.values.password}
-                onChange={props.onChange}
+                value={props.password}
+                onChange={props.handlePasswordInput}
               />
             </Col>
           </Form.Group>
@@ -36,8 +36,8 @@ export default function SignupForm(props) {
                 type="text"
                 placeholder="Add a username"
                 name="username"
-                value={props.values.username}
-                onChange={props.onChange}
+                value={props.username}
+                onChange={props.handleUsernameInput}
               />
             </Col>
           </Form.Group>

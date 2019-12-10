@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import store from "./store";
 import { Provider } from "react-redux";
 import { Route } from "react-router-dom";
@@ -6,19 +6,15 @@ import "./App.css";
 import Home from "./components/Home";
 import SignupFormContainer from "./components/SignupFormContainer";
 
-class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <div className="App">
-          <div className="appdiv">
-            <Route path="/" component={Home} />
-            <Route path="/signup" component={SignupFormContainer} />
-          </div>
+export default function App() {
+  return (
+    <Provider store={store}>
+      <div className="App">
+        <div className="appdiv">
+          <Route path="/" exact component={Home} />
+          <Route path="/signup" exact component={SignupFormContainer} />
         </div>
-      </Provider>
-    );
-  }
+      </div>
+    </Provider>
+  );
 }
-
-export default App;

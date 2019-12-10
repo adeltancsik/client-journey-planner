@@ -1,40 +1,43 @@
-import React from "react";
+import React, { useState } from "react";
 import SignupForm from "./SignupForm";
-import { connect } from "react-redux";
 import { signup } from "../actions/user";
+import { useDispatch } from "react-redux";
 
-class SignupFormContainer extends React.Component {
-  state = { email: "", password: "", username: "" };
+export default function SignupFormContainer() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
 
-  onSubmit = event => {
+  const dispatch = useDispatch();
+
+  const onSubmit = event => {
     event.preventDefault();
-    this.props.signup(
-      this.state.email,
-      this.state.password,
-      this.state.username
-    );
-    this.setState({
-      email: "",
-      password: "",
-      username: ""
-    });
+    dispatch(signup(email, password, username));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    setEmail("");
+    setPassword("");
+    setUsername("");
   };
 
-  onChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    });
+  const handleEmailInput = event => {
+    setEmail(event.target.value);
+  };
+  const handlePasswordInput = event => {
+    setPassword(event.target.value);
+  };
+  const handleUsernameInput = event => {
+    setUsername(event.target.value);
   };
 
-  render() {
-    return (
-      <SignupForm
-        onSubmit={this.onSubmit}
-        onChange={this.onChange}
-        values={this.state}
-      />
-    );
-  }
+  return (
+    <SignupForm
+      onSubmit={onSubmit}
+      handleEmailInput={handleEmailInput}
+      handlePasswordInput={handlePasswordInput}
+      handleUsernameInput={handleUsernameInput}
+      email={email}
+      password={password}
+      username={username}
+    />
+  );
 }
-
-export default connect(null, { signup })(SignupFormContainer);
