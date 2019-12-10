@@ -69,7 +69,6 @@ export const loadJourney = id => dispatch => {
   request
     .get(`${baseUrl}/journey/${id}`)
     .then(response => {
-      console.log("country name is: ", response.body.country);
       dispatch(loadJourneySuccess(response.body));
       dispatch(loadCountry(response.body.country));
     })

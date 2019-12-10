@@ -9,20 +9,18 @@ export default function AddEventForm(props) {
       ) : (
         <div>
           <h3>Start to plan a new journey:</h3>
-          <Form onSubmit={props.onSubmit}>
+          <Form onSubmit={props.onSubmit} className="container">
             <Row>
-              <Form.Group>
-                <Col>
-                  <Form.Control
-                    type="text"
-                    name="name"
-                    value={props.name}
-                    onChange={props.handleNameInput}
-                    placeholder="Name of the journey"
-                  />
-                </Col>
+              <Form.Group as={Col} md="3">
+                <Form.Control
+                  type="text"
+                  name="name"
+                  value={props.name}
+                  onChange={props.handleNameInput}
+                  placeholder="Name of the journey"
+                />
               </Form.Group>
-              <Form.Group as={Col} controlId="formGridState">
+              <Form.Group as={Col} md="3">
                 <Form.Control
                   as="select"
                   type="text"
@@ -47,16 +45,14 @@ export default function AddEventForm(props) {
               />
             </Col>
           </Form.Group> */}
-              <Form.Group>
-                <Col>
-                  <Form.Control
-                    type="text"
-                    name="startDate"
-                    value={props.startDate}
-                    onChange={props.handleStartDateInput}
-                    placeholder="Starting date"
-                  />
-                </Col>
+              <Form.Group as={Col} md="3">
+                <Form.Control
+                  type="text"
+                  name="startDate"
+                  value={props.startDate}
+                  onChange={props.handleStartDateInput}
+                  placeholder="Starting date"
+                />
               </Form.Group>
             </Row>
             <Button

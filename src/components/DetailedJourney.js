@@ -1,6 +1,7 @@
 import React from "react";
 import { Badge } from "react-bootstrap";
 import moment from "moment";
+import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 
 export default function DetailedJourney(props) {
   const date = moment(props.journey.startDate, "YYYY-MM-DD").fromNow();
@@ -28,6 +29,31 @@ export default function DetailedJourney(props) {
                 {date}
               </i>
             </p>
+          </div>
+          <div>
+            <Timeline lineColor={"#E4592F"}>
+              <TimelineItem
+                key="002"
+                dateText={props.journey.startDate}
+                dateInnerStyle={{
+                  background: "#FDBE01",
+                  color: "#FFFFFF"
+                }}
+                bodyContainerStyle={{
+                  background: "#FDBE01",
+                  padding: "10px",
+                  borderRadius: "8px",
+                  boxShadow: "0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.3)"
+                }}
+                style={{ color: "#FDBE01" }}
+              >
+                <h4 style={{ color: "#FFFFFF" }}>Subtitle</h4>
+                <p>
+                  Est incididunt sint eu minim dolore mollit velit velit commodo
+                  ex nulla exercitation.
+                </p>
+              </TimelineItem>
+            </Timeline>
           </div>
         </div>
       )}
