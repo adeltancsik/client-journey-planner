@@ -27,6 +27,7 @@ const journeyCreateSuccess = journey => ({
 });
 
 export const createJourney = data => (dispatch, getState) => {
+  console.log("this is data from actions: ", data);
   const state = getState();
   const { user } = state;
 

@@ -4,6 +4,7 @@ import JourneyList from "./JourneyList";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import LoginFormContainer from "./LoginFormContainer";
+import AddJourneyFormContainer from "./AddJourneyFormContainer";
 
 export default function Home() {
   const journeys = useSelector(state => state.journeys);
@@ -26,8 +27,10 @@ export default function Home() {
           <LoginFormContainer />
         </div>
       ) : (
-        <h2>Welcome {username}!</h2>
-        // <AddEventFormContainer />
+        <div>
+          <h2>Welcome {username}!</h2>
+          <AddJourneyFormContainer />
+        </div>
       )}
       <JourneyList journeys={journeys} />
     </div>
