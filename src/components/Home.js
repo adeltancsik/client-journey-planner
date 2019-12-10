@@ -1,16 +1,19 @@
-import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { loadJourneys } from "../actions/journeys";
-import { connect } from "react-redux";
 import JourneyList from "./JourneyList";
+import { useDispatch, useSelector } from "react-redux";
 
-class Home extends Component {
-  componentDidMount() {
-    this.props.loadJourneys();
-  }
-  render() {
-    return (
-      <div className="home">
-        {/* {!this.props.user ? (
+export default function Home() {
+  const journeys = useSelector(state => state.journeys);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadJourneys());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  return (
+    <div className="home">
+      {/* {!this.props.user ? (
       <div>
         <p>
           If you don't have an account yet, please{" "}
@@ -21,15 +24,7 @@ class Home extends Component {
     ) : (
       <AddEventFormContainer />
     )} */}
-        <JourneyList journeys={this.props.journeys} />
-      </div>
-    );
-  }
+      <JourneyList journeys={journeys} />
+    </div>
+  );
 }
-
-const mapStateToProps = state => ({
-  journeys: state.journeys
-  // user: state.user
-});
-
-export default connect(mapStateToProps, { loadJourneys })(Home);

@@ -19,7 +19,6 @@ export default function JourneyList(props) {
           <CardDeck className="container">
             {props.journeys.map(journey => {
               const date = moment(journey.startDate, "YYYY-MM-DD").fromNow();
-              console.log("true?", date.includes("in"));
               return (
                 <Card
                   style={{
