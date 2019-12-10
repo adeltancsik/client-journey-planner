@@ -1,14 +1,22 @@
-import React, { useState } from "react";
-import { createJourney } from "../actions/journeys";
+import React, { useState, useEffect } from "react";
+import { createJourney, loadCountries } from "../actions/journeys";
 import AddJourneyForm from "./AddJourneyForm";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function AddJourneyFormContainer() {
   const [name, setName] = useState("");
   const [country, setCountry] = useState("");
   const [startDate, setStartDate] = useState("");
 
+  const countries = useSelector(state => state.countries);
+
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadCountries());
+    console.log("countries: ", countries);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSubmit = event => {
     event.preventDefault();

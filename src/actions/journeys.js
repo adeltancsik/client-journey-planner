@@ -40,3 +40,19 @@ export const createJourney = data => (dispatch, getState) => {
     })
     .catch(console.error);
 };
+
+// fetching a list of countries to choose from
+export const COUNTRIES_FETCHED = "COUNTRIES_FETCHED";
+
+const countriesFetched = countries => ({
+  type: COUNTRIES_FETCHED,
+  payload: countries
+});
+
+export const loadCountries = () => dispatch => {
+  request(`https://restcountries.eu/rest/v2/all`)
+    .then(response => {
+      dispatch(countriesFetched(response.body));
+    })
+    .catch(console.error);
+};
