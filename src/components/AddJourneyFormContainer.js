@@ -14,7 +14,6 @@ export default function AddJourneyFormContainer() {
 
   useEffect(() => {
     dispatch(loadCountries());
-    console.log("countries: ", countries);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -46,6 +45,7 @@ export default function AddJourneyFormContainer() {
       name={name}
       country={country}
       startDate={startDate}
+      countries={countries}
     />
   );
 }
