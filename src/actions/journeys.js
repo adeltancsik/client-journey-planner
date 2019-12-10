@@ -56,3 +56,20 @@ export const loadCountries = () => dispatch => {
     })
     .catch(console.error);
 };
+
+// fetching a single journey based on its id
+export const JOURNEY_FETCHED = "JOURNEY_FETCHED";
+
+const loadJourneySuccess = journey => ({
+  type: JOURNEY_FETCHED,
+  payload: journey
+});
+
+export const loadJourney = id => dispatch => {
+  request
+    .get(`${baseUrl}/journey/${id}`)
+    .then(response => {
+      dispatch(loadJourneySuccess(response.body));
+    })
+    .catch(console.error);
+};

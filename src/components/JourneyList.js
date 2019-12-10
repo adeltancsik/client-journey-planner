@@ -30,7 +30,7 @@ export default function JourneyList(props) {
                   border="info"
                   key={journey.id}
                 >
-                  <Link to={`/journeys/${journey.id}`} className="link">
+                  <Link to={`/journey/${journey.id}`} className="link">
                     {/* <Card.Img
                       variant="top"
                       src={journey.url}
@@ -39,7 +39,7 @@ export default function JourneyList(props) {
                     <Card.Header>{journey.country}</Card.Header>
                   </Link>
                   <Card.Body style={{ maxHeight: "12rem", overflow: "auto" }}>
-                    <Link to={`/journeys/${journey.id}`} className="link">
+                    <Link to={`/journey/${journey.id}`} className="link">
                       <Card.Title>{journey.name}</Card.Title>
                     </Link>
                     {/* <Card.Text>{journey.country}</Card.Text> */}
