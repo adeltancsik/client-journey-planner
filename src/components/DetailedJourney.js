@@ -2,9 +2,19 @@ import React from "react";
 import { Badge } from "react-bootstrap";
 import moment from "moment";
 import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
+import AddToDoContainer from "./AddToDoContainer";
 
 export default function DetailedJourney(props) {
   const date = moment(props.journey.startDate, "YYYY-MM-DD").fromNow();
+
+  // sorting todos by time (also in backend), so when adding a new todo it renders correctly
+  let sortedToDos = [];
+  if (props.todos) {
+    sortedToDos = props.todos.sort((a, b) => {
+      return new Date(a.time).getTime() - new Date(b.time).getTime();
+    });
+  }
+
   return (
     <div className="detailedjourney">
       {!props.journey || !props.todos ? (
@@ -31,12 +41,16 @@ export default function DetailedJourney(props) {
             </p>
           </div>
           <div>
+            <AddToDoContainer />
             <Timeline lineColor={"#E4592F"}>
-              {props.todos.map(todo => {
+              {sortedToDos.map(todo => {
+                const formattedTime = moment(todo.time).format(
+                  "MMMM Do, h:mm a"
+                );
                 return (
                   <TimelineItem
                     key={todo.id}
-                    dateText={todo.time}
+                    dateText={formattedTime}
                     dateInnerStyle={{
                       background: "#FDBE01",
                       color: "#FFFFFF"
@@ -54,27 +68,6 @@ export default function DetailedJourney(props) {
                   </TimelineItem>
                 );
               })}
-              <TimelineItem
-                key="002"
-                dateText={props.journey.startDate}
-                dateInnerStyle={{
-                  background: "#FDBE01",
-                  color: "#FFFFFF"
-                }}
-                bodyContainerStyle={{
-                  background: "#FDBE01",
-                  padding: "10px",
-                  borderRadius: "8px",
-                  boxShadow: "0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.3)"
-                }}
-                style={{ color: "#FDBE01" }}
-              >
-                <h4 style={{ color: "#FFFFFF" }}>Subtitle</h4>
-                <p>
-                  Est incididunt sint eu minim dolore mollit velit velit commodo
-                  ex nulla exercitation.
-                </p>
-              </TimelineItem>
             </Timeline>
           </div>
         </div>

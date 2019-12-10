@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
 
-export default function AddEventForm(props) {
+export default function AddJourneyForm(props) {
   return (
     <div className="journeyform">
       {!props.countries ? (
@@ -34,17 +34,6 @@ export default function AddEventForm(props) {
                   })}
                 </Form.Control>
               </Form.Group>
-              {/* <Form.Group>
-            <Col>
-              <Form.Control
-                type="text"
-                name="country"
-                value={props.country}
-                onChange={props.handleCountryInput}
-                placeholder="Country"
-              />
-            </Col>
-          </Form.Group> */}
               <Form.Group as={Col} md="3">
                 <Form.Control
                   type="text"
