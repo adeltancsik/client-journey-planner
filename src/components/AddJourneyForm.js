@@ -10,7 +10,7 @@ export default function AddJourneyForm(props) {
         <div>
           <h3>Start to plan a new journey:</h3>
           <Form onSubmit={props.onSubmit} className="container">
-            <Row>
+            <Row style={{ justifyContent: "center" }}>
               <Form.Group as={Col} md="3">
                 <Form.Control
                   type="text"

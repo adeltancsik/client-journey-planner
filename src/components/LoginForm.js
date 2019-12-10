@@ -6,8 +6,8 @@ export default function LoginForm(props) {
   return (
     <div className="loginform">
       <h5>Please log in:</h5>
-      <Form onSubmit={props.onSubmit}>
-        <Row>
+      <Form onSubmit={props.onSubmit} className="container">
+        <Row style={{ justifyContent: "center" }}>
           <Form.Group controlId="formBasicEmail">
             <Col>
               <Form.Control

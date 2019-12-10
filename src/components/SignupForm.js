@@ -5,9 +5,9 @@ import { Link } from "react-router-dom";
 export default function SignupForm(props) {
   return (
     <div className="signupform">
-      <h5>Please sign up:</h5>
-      <Form onSubmit={props.onSubmit}>
-        <Row>
+      <h5>Sign up here:</h5>
+      <Form onSubmit={props.onSubmit} className="container">
+        <Row style={{ justifyContent: "center" }}>
           <Form.Group>
             <Col>
               <Form.Control

@@ -4,7 +4,6 @@ import { Form, Button, Row, Col } from "react-bootstrap";
 export default function AddToDo(props) {
   return (
     <div className="todoform">
-      <h3>Add an event to your timeline for this journey:</h3>
       <Form onSubmit={props.onSubmit} className="container">
         <Row>
           <Form.Group as={Col} md="3">
@@ -16,7 +15,7 @@ export default function AddToDo(props) {
               placeholder="What to do?"
             />
           </Form.Group>
-          <Form.Group as={Col} md="3">
+          <Form.Group as={Col} md="6">
             <Form.Control
               type="text"
               name="description"

@@ -1,8 +1,9 @@
 import React from "react";
-import { Badge } from "react-bootstrap";
+import { Badge, Accordion, Card } from "react-bootstrap";
 import moment from "moment";
 import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 import AddToDoContainer from "./AddToDoContainer";
+import png from "../assets/plus-icon.png";
 
 export default function DetailedJourney(props) {
   const date = moment(props.journey.startDate, "YYYY-MM-DD").fromNow();
@@ -21,9 +22,9 @@ export default function DetailedJourney(props) {
         "Loading..."
       ) : (
         <div className="journeydetails">
-          <h2>
+          <h1>
             <Badge variant={"light"}>{props.journey.name}</Badge>
-          </h2>
+          </h1>
           <h4>Journey to {props.journey.country}</h4>
           {/* <img
             src={props.journey.url}
@@ -41,7 +42,20 @@ export default function DetailedJourney(props) {
             </p>
           </div>
           <div>
-            <AddToDoContainer />
+            <Accordion>
+              <Card>
+                <Accordion.Toggle as={Card.Header} eventKey="0">
+                  <img src={png} alt={"plus-icon"} width="30" /> Add new event
+                  on my timeline!
+                </Accordion.Toggle>
+                <Accordion.Collapse eventKey="0">
+                  <Card.Body>
+                    <AddToDoContainer />
+                  </Card.Body>
+                </Accordion.Collapse>
+              </Card>
+            </Accordion>
+
             <Timeline lineColor={"#E4592F"}>
               {sortedToDos.map(todo => {
                 const formattedTime = moment(todo.time).format(
@@ -63,7 +77,9 @@ export default function DetailedJourney(props) {
                     }}
                     style={{ color: "#FDBE01" }}
                   >
-                    <h4 style={{ color: "#FFFFFF" }}>{todo.name}</h4>
+                    <h3 style={{ color: "#FFFFFF" }}>
+                      <b>{todo.name}</b>
+                    </h3>
                     <p>{todo.description}</p>
                   </TimelineItem>
                 );
