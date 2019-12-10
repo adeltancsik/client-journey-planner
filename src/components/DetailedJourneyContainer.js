@@ -15,7 +15,11 @@ export default function DetailedJourneyContainer() {
   useEffect(() => {
     const url = window.location.href;
     var res = url.split("/", 5);
-    dispatch(loadJourney(Number(res[4])));
+    async function getJourney() {
+      await dispatch(loadJourney(Number(res[4])));
+    }
+    // async function getCountry() {}
+    getJourney();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (

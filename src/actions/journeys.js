@@ -69,7 +69,26 @@ export const loadJourney = id => dispatch => {
   request
     .get(`${baseUrl}/journey/${id}`)
     .then(response => {
+      console.log("country name is: ", response.body.country);
       dispatch(loadJourneySuccess(response.body));
+      dispatch(loadCountry(response.body.country));
+    })
+    .catch(console.error);
+};
+
+// fetching a single country based on its name from external API
+export const COUNTRY_FETCHED = "COUNTRY_FETCHED";
+
+const loadCountrySuccess = country => ({
+  type: COUNTRY_FETCHED,
+  payload: country
+});
+
+export const loadCountry = name => dispatch => {
+  request
+    .get(`https://restcountries.eu/rest/v2/name/${name}`)
+    .then(response => {
+      dispatch(loadCountrySuccess(response.body));
     })
     .catch(console.error);
 };

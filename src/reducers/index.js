@@ -5,6 +5,7 @@ import username from "./username";
 import signup from "./signup";
 import countries from "./countries";
 import journey from "./journey";
+import country from "./country";
 
 export default combineReducers({
   journeys,
@@ -12,5 +13,6 @@ export default combineReducers({
   username,
   signup,
   countries,
-  journey
+  journey,
+  country
 });
