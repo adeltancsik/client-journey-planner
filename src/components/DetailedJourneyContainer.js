@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { loadJourney } from "../actions/journeys";
+import { loadTodos } from "../actions/todos";
 import DetailedJourney from "./DetailedJourney";
 import { useDispatch, useSelector } from "react-redux";
 // import { Link } from "react-router-dom";
@@ -8,8 +9,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 export default function DetailedJourneyContainer() {
   const journey = useSelector(state => state.journey);
-  //   const user = useSelector(state => state.user);
-  //   const username = useSelector(state => state.username);
+  const todos = useSelector(state => state.todos);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,10 +18,14 @@ export default function DetailedJourneyContainer() {
     async function getJourney() {
       await dispatch(loadJourney(Number(res[4])));
     }
-    // async function getCountry() {}
+    async function getToDo() {
+      await dispatch(loadTodos(Number(res[4])));
+    }
     getJourney();
+    getToDo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
   return (
     <div className="detailedjourney">
       {/* {!user ? (
@@ -38,7 +42,11 @@ export default function DetailedJourneyContainer() {
           <AddJourneyFormContainer />
         </div>
       )} */}
-      {!journey ? "Loading..." : <DetailedJourney journey={journey} />}
+      {!journey ? (
+        "Loading..."
+      ) : (
+        <DetailedJourney journey={journey} todos={todos} />
+      )}
     </div>
   );
 }

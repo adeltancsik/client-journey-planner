@@ -6,6 +6,7 @@ import signup from "./signup";
 import countries from "./countries";
 import journey from "./journey";
 import country from "./country";
+import todos from "./todos";
 
 export default combineReducers({
   journeys,
@@ -14,5 +15,6 @@ export default combineReducers({
   signup,
   countries,
   journey,
-  country
+  country,
+  todos
 });
