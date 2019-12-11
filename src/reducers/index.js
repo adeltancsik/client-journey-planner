@@ -7,6 +7,7 @@ import countries from "./countries";
 import journey from "./journey";
 import country from "./country";
 import todos from "./todos";
+import packlist from "./packlist";
 
 export default combineReducers({
   journeys,
@@ -16,5 +17,6 @@ export default combineReducers({
   countries,
   journey,
   country,
-  todos
+  todos,
+  packlist
 });
