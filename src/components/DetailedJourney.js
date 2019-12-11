@@ -4,6 +4,8 @@ import moment from "moment";
 import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 import AddToDoContainer from "./AddToDoContainer";
 import png from "../assets/plus-icon.png";
+import img from "../assets/list-icon.png";
+import PackListContainer from "./PackListContainer";
 
 export default function DetailedJourney(props) {
   const date = moment(props.journey.startDate, "YYYY-MM-DD").fromNow();
@@ -22,6 +24,16 @@ export default function DetailedJourney(props) {
         "Loading..."
       ) : (
         <div className="journeydetails">
+          <div className="pack-container">
+            <Accordion id="pack">
+              <Accordion.Toggle as={Badge} eventKey="0">
+                <img src={img} alt={"list-icon"} width="40" id="listicon" />
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <PackListContainer />
+              </Accordion.Collapse>
+            </Accordion>
+          </div>
           <h1>
             <Badge variant={"light"}>{props.journey.name}</Badge>
           </h1>

@@ -13,6 +13,31 @@
   margin: 3px;
 }
 
+img {
+  transition: 0.3s;
+}
+
+img:hover {
+  transform: scale(1.2);
+}
+
+.pack-container {
+  background: rgba(255, 255, 255, 0.205);
+  border-radius: 30px;
+  position: absolute;
+  right: 10%;
+  top: 10%;
+  z-index: 1;
+}
+
+/* #pack {
+  justify-content: flex-start;
+} */
+
+.packlist {
+  display: inline;
+}
+
 /* import moment input */
 .im-input-moment {
   width: 100%;
