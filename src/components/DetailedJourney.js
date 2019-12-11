@@ -11,6 +11,8 @@ import PackListContainer from "./PackListContainer";
 export default function DetailedJourney(props) {
   const date = moment(props.journey.startDate, "YYYY-MM-DD").fromNow();
 
+  const currentCountry = props.country[0];
+
   // sorting todos by time (also in backend), so when adding a new todo it renders correctly
   let sortedToDos = [];
   if (props.todos) {
@@ -21,7 +23,7 @@ export default function DetailedJourney(props) {
 
   return (
     <div className="detailedjourney">
-      {!props.journey || !props.todos ? (
+      {!props.journey || !props.todos || !props.country ? (
         "Loading..."
       ) : (
         <div className="journeydetails">
@@ -47,7 +49,42 @@ export default function DetailedJourney(props) {
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
                 <ListGroup>
-                  <ListGroup.Item>hi</ListGroup.Item>
+                  <ListGroup.Item>
+                    <b
+                      style={{
+                        textDecoration: "underline",
+                        fontSize: "22px"
+                      }}
+                    >
+                      Info about {currentCountry.name}
+                    </b>
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <img src={currentCountry.flag} alt="flag" width="70" />{" "}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <b>Capital:</b> {currentCountry.capital}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <b>Currencies:</b>{" "}
+                    {currentCountry.currencies.map(currency => {
+                      return (
+                        <ListGroup.Item key={currency.name}>
+                          {currency.name}
+                        </ListGroup.Item>
+                      );
+                    })}
+                  </ListGroup.Item>
+                  <ListGroup.Item>
+                    <b>Languages:</b>{" "}
+                    {currentCountry.languages.map(language => {
+                      return (
+                        <ListGroup.Item key={language.name}>
+                          {language.name}
+                        </ListGroup.Item>
+                      );
+                    })}
+                  </ListGroup.Item>
                 </ListGroup>
               </Accordion.Collapse>
             </Accordion>

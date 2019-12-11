@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 export default function DetailedJourneyContainer() {
   const journey = useSelector(state => state.journey);
   const todos = useSelector(state => state.todos);
+  const country = useSelector(state => state.country);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,10 +33,10 @@ export default function DetailedJourneyContainer() {
 
   return (
     <div className="detailedjourney">
-      {!journey ? (
+      {!journey || !todos || !country ? (
         "Loading..."
       ) : (
-        <DetailedJourney journey={journey} todos={todos} />
+        <DetailedJourney journey={journey} todos={todos} country={country} />
       )}
     </div>
   );
