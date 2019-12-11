@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 import { createJourney, loadCountries } from "../actions/journeys";
 import AddJourneyForm from "./AddJourneyForm";
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 export default function AddJourneyFormContainer() {
   const [name, setName] = useState("");
   const [country, setCountry] = useState("");
-  const [startDate, setStartDate] = useState("");
+  const [startDate, setStartDate] = useState(moment());
 
   const countries = useSelector(state => state.countries);
 
@@ -23,7 +24,6 @@ export default function AddJourneyFormContainer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     setName("");
     setCountry("");
-    setStartDate("");
   };
 
   const handleNameInput = event => {
@@ -32,20 +32,17 @@ export default function AddJourneyFormContainer() {
   const handleCountryInput = event => {
     setCountry(event.target.value);
   };
-  const handleStartDateInput = event => {
-    setStartDate(event.target.value);
-  };
 
   return (
     <AddJourneyForm
       onSubmit={onSubmit}
       handleNameInput={handleNameInput}
       handleCountryInput={handleCountryInput}
-      handleStartDateInput={handleStartDateInput}
       name={name}
       country={country}
       startDate={startDate}
       countries={countries}
+      setStartDate={setStartDate}
     />
   );
 }

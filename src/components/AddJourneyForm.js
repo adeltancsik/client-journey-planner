@@ -1,5 +1,6 @@
 import React from "react";
-import { Form, Button, Row, Col } from "react-bootstrap";
+import { Form, Button, Row, Col, Accordion } from "react-bootstrap";
+import { DatePicker } from "react-input-moment";
 
 export default function AddJourneyForm(props) {
   return (
@@ -11,6 +12,29 @@ export default function AddJourneyForm(props) {
           <h3>Start to plan a new journey:</h3>
           <Form onSubmit={props.onSubmit} className="container">
             <Row style={{ justifyContent: "center" }}>
+              <Col md="3">
+                <Accordion>
+                  <Accordion.Toggle as={Form.Group} eventKey="0">
+                    <Form.Control
+                      className="output"
+                      type="text"
+                      value={props.startDate.format("YYYY-MM-DD")}
+                      readOnly
+                    />
+                  </Accordion.Toggle>
+                  <Accordion.Collapse eventKey="0">
+                    <Form.Group>
+                      <div className="wrapper small">
+                        <DatePicker
+                          moment={props.startDate}
+                          locale="en"
+                          onChange={mom => props.setStartDate(mom)}
+                        />
+                      </div>
+                    </Form.Group>
+                  </Accordion.Collapse>
+                </Accordion>
+              </Col>
               <Form.Group as={Col} md="3">
                 <Form.Control
                   type="text"
@@ -33,15 +57,6 @@ export default function AddJourneyForm(props) {
                     return <option key={countryName}>{countryName}</option>;
                   })}
                 </Form.Control>
-              </Form.Group>
-              <Form.Group as={Col} md="3">
-                <Form.Control
-                  type="text"
-                  name="startDate"
-                  value={props.startDate}
-                  onChange={props.handleStartDateInput}
-                  placeholder="Starting date"
-                />
               </Form.Group>
             </Row>
             <Button
