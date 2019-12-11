@@ -4,6 +4,7 @@ import { Card, CardDeck } from "react-bootstrap";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { loadJourneys } from "../actions/journeys";
+import png from "../assets/suitcase.png";
 // import "./styling/EventList.css";
 
 export default function JourneyList() {
@@ -22,7 +23,7 @@ export default function JourneyList() {
         "Loading..."
       ) : (
         <div
-          className="container"
+          className="journeyList"
           style={{
             maxWidth: "70rem"
           }}
@@ -47,7 +48,15 @@ export default function JourneyList() {
                       src={journey.url}
                       alt={journey.name}
                     /> */}
-                    <Card.Header>{journey.country}</Card.Header>
+                    <Card.Header>
+                      <img
+                        // src="https://image.flaticon.com/icons/png/512/25/25694.png"
+                        src={png}
+                        width="30"
+                        alt="home"
+                      />{" "}
+                      to {journey.country}
+                    </Card.Header>
                   </Link>
                   <Card.Body style={{ maxHeight: "12rem", overflow: "auto" }}>
                     <Link to={`/journey/${journey.id}`} className="link">

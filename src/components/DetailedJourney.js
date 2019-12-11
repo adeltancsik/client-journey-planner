@@ -1,10 +1,11 @@
 import React from "react";
-import { Badge, Accordion, Card } from "react-bootstrap";
+import { Badge, Accordion, Card, ListGroup } from "react-bootstrap";
 import moment from "moment";
 import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 import AddToDoContainer from "./AddToDoContainer";
 import png from "../assets/plus-icon.png";
 import img from "../assets/list-icon.png";
+import icon from "../assets/info.png";
 import PackListContainer from "./PackListContainer";
 
 export default function DetailedJourney(props) {
@@ -34,6 +35,23 @@ export default function DetailedJourney(props) {
               </Accordion.Collapse>
             </Accordion>
           </div>
+          <div className="country-container">
+            <Accordion id="country-info">
+              <Accordion.Toggle as={Badge} eventKey="0">
+                <img
+                  src={icon}
+                  alt={"location-icon"}
+                  width="40"
+                  id="listicon"
+                />
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <ListGroup>
+                  <ListGroup.Item>hi</ListGroup.Item>
+                </ListGroup>
+              </Accordion.Collapse>
+            </Accordion>
+          </div>
           <h1>
             <Badge variant={"light"}>{props.journey.name}</Badge>
           </h1>
@@ -53,7 +71,7 @@ export default function DetailedJourney(props) {
               </i>
             </p>
           </div>
-          <div>
+          <div className="timeLine">
             <Accordion>
               <Card>
                 <Accordion.Toggle as={Card.Header} eventKey="0">
@@ -67,36 +85,39 @@ export default function DetailedJourney(props) {
                 </Accordion.Collapse>
               </Card>
             </Accordion>
-
-            <Timeline lineColor={"#E4592F"}>
-              {sortedToDos.map(todo => {
-                const formattedTime = moment(todo.time).format(
-                  "MMMM Do, h:mm a"
-                );
-                return (
-                  <TimelineItem
-                    key={todo.id}
-                    dateText={formattedTime}
-                    dateInnerStyle={{
-                      background: "#FDBE01",
-                      color: "#FFFFFF"
-                    }}
-                    bodyContainerStyle={{
-                      background: "#FDBE01",
-                      padding: "10px",
-                      borderRadius: "8px",
-                      boxShadow: "0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.3)"
-                    }}
-                    style={{ color: "#FDBE01" }}
-                  >
-                    <h3 style={{ color: "#FFFFFF" }}>
-                      <b>{todo.name}</b>
-                    </h3>
-                    <p>{todo.description}</p>
-                  </TimelineItem>
-                );
-              })}
-            </Timeline>
+            {props.todos.length === 0 ? (
+              " "
+            ) : (
+              <Timeline lineColor={"#E4592F"}>
+                {sortedToDos.map(todo => {
+                  const formattedTime = moment(todo.time).format(
+                    "MMMM Do, h:mm a"
+                  );
+                  return (
+                    <TimelineItem
+                      key={todo.id}
+                      dateText={formattedTime}
+                      dateInnerStyle={{
+                        background: "#FDBE01",
+                        color: "#FFFFFF"
+                      }}
+                      bodyContainerStyle={{
+                        background: "#FDBE01",
+                        padding: "10px",
+                        borderRadius: "8px",
+                        boxShadow: "0.5rem 0.5rem 2rem 0 rgba(0, 0, 0, 0.3)"
+                      }}
+                      style={{ color: "#FDBE01" }}
+                    >
+                      <h3 style={{ color: "#FFFFFF" }}>
+                        <b>{todo.name}</b>
+                      </h3>
+                      <p>{todo.description}</p>
+                    </TimelineItem>
+                  );
+                })}
+              </Timeline>
+            )}
           </div>
         </div>
       )}

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PackList from "./PackList";
 import { useDispatch, useSelector } from "react-redux";
-import { loadPackList, createPack } from "../actions/packlist";
-import { editPack } from "../actions/packlist";
+import { loadPackList, createPack, editPack } from "../actions/packlist";
 
 export default function PackListContainer() {
   const journey = useSelector(state => state.journey);

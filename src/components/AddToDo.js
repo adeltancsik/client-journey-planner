@@ -7,9 +7,9 @@ export default function AddToDo(props) {
     <div className="todoform">
       <Form onSubmit={props.onSubmit} className="container">
         <Row>
-          <Col>
+          <Col md="4">
             <Accordion>
-              <Accordion.Toggle as={Form.Group} eventKey="0" md="5">
+              <Accordion.Toggle as={Form.Group} eventKey="0">
                 <Form.Control
                   className="output"
                   type="text"
@@ -31,6 +31,8 @@ export default function AddToDo(props) {
               </Accordion.Collapse>
             </Accordion>
           </Col>
+        </Row>
+        <Row>
           <Form.Group as={Col} md="3">
             <Form.Control
               type="text"

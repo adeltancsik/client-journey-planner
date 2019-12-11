@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { loadJourney } from "../actions/journeys";
 import { loadTodos } from "../actions/todos";
+import { loadPackList } from "../actions/packlist";
 import DetailedJourney from "./DetailedJourney";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -11,15 +12,20 @@ export default function DetailedJourneyContainer() {
 
   useEffect(() => {
     const url = window.location.href;
-    var res = url.split("/", 5);
+    const res = url.split("/", 5);
+    const journeyId = Number(res[4]);
     async function getJourney() {
-      await dispatch(loadJourney(Number(res[4])));
+      await dispatch(loadJourney(journeyId));
     }
     async function getToDo() {
-      await dispatch(loadTodos(Number(res[4])));
+      await dispatch(loadTodos(journeyId));
+    }
+    async function getPackList() {
+      await dispatch(loadPackList(journeyId));
     }
     getJourney();
     getToDo();
+    getPackList();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
