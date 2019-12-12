@@ -1,6 +1,5 @@
 import request from "superagent";
-
-const baseUrl = "http://localhost:4000";
+import { baseUrl } from "../constants";
 
 //login should dispatch the JWT from the /login responsebody inside an action with type JWT
 

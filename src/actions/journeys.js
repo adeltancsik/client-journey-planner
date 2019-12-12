@@ -1,6 +1,5 @@
 import request from "superagent";
-
-const baseUrl = "http://localhost:4000";
+import { baseUrl } from "../constants";
 
 // fetching for displaying all the journeys
 export const JOURNEYS_FETCHED = "JOURNEYS_FETCHED";

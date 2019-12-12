@@ -1,6 +1,5 @@
 import request from "superagent";
-
-const baseUrl = "http://localhost:4000";
+import { baseUrl } from "../constants";
 
 // fetching todos belonging to a journey
 export const PACKLIST_FETCHED = "PACKLIST_FETCHED";
