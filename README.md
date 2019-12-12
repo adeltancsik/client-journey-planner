@@ -38,7 +38,7 @@ This is a journey planner application, where a registered user can access the si
 
 ## Features built so far
 
-gif
+![](/assets/journey-planner.gif)
 
 ## Create React App
 
