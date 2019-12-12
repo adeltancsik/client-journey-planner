@@ -89,18 +89,15 @@ export default function DetailedJourney(props) {
               </Accordion.Collapse>
             </Accordion>
           </div>
-          <h1 className="calli" style={{ textDecoration: "underline" }}>
-            {props.journey.name}
+          <h1 className="calli" style={{ marginTop: "4%" }}>
+            <b>{props.journey.name}</b>
           </h1>
-          <h4>Journey to {props.journey.country}</h4>
-          {/* <img
-            src={props.journey.url}
-            alt={props.journey.id}
-            style={{ width: 220, borderRadius: 40 }}
-          /> */}
+          <h4>
+            Journey to <b>{props.journey.country}</b>
+          </h4>
           <div className="details">
             <p>
-              <b>Date: {props.journey.startDate}</b>
+              Date: <b>{props.journey.startDate}</b>
               <br />
               <i>
                 {date.includes("in") ? "Starts " : "Ended "}

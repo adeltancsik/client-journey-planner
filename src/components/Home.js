@@ -1,14 +1,22 @@
 import React from "react";
 import JourneyList from "./JourneyList";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import LoginFormContainer from "./LoginFormContainer";
 import AddJourneyFormContainer from "./AddJourneyFormContainer";
+import { deleteJourney } from "../actions/journeys";
 
 export default function Home() {
   const journeys = useSelector(state => state.journeys);
   const user = useSelector(state => state.user);
   const username = useSelector(state => state.username);
+
+  const dispatch = useDispatch();
+
+  const onDelete = itemId => {
+    dispatch(deleteJourney(itemId));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
 
   return (
     <div className="home">
@@ -26,7 +34,7 @@ export default function Home() {
             <b>Welcome {username}!</b>
           </h1>
           <AddJourneyFormContainer />
-          <JourneyList journeys={journeys} />
+          <JourneyList journeys={journeys} onDelete={onDelete} />
         </div>
       )}
     </div>

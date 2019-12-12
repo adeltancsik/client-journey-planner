@@ -1,12 +1,13 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardDeck } from "react-bootstrap";
+import { Card, CardDeck, Button } from "react-bootstrap";
 import moment from "moment";
 import { useDispatch, useSelector } from "react-redux";
 import { loadJourneys } from "../actions/journeys";
 import png from "../assets/suitcase.png";
+import bin from "../assets/bin-icon.png";
 
-export default function JourneyList() {
+export default function JourneyList(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,21 +32,22 @@ export default function JourneyList() {
             {journeys.map(journey => {
               const date = moment(journey.startDate, "YYYY-MM-DD").fromNow();
               return (
-                <Link
-                  to={`/journey/${journey.id}`}
-                  className="link"
-                  style={{ textDecoration: "none" }}
+                <Card
+                  style={{
+                    minWidth: "18rem",
+                    maxWidth: "18rem",
+                    margin: "1rem"
+                  }}
+                  className="text-center"
+                  border="warning"
+                  key={journey.id}
+                  id="card"
                 >
-                  <Card
-                    style={{
-                      minWidth: "18rem",
-                      maxWidth: "18rem",
-                      margin: "1rem"
-                    }}
-                    className="text-center"
-                    border="warning"
-                    key={journey.id}
-                    id="card"
+                  {" "}
+                  <Link
+                    to={`/journey/${journey.id}`}
+                    className="link"
+                    style={{ textDecoration: "none" }}
                   >
                     <Card.Header>
                       <img src={png} width="30" alt="home" /> to{" "}
@@ -55,14 +57,23 @@ export default function JourneyList() {
                     <Card.Body style={{ maxHeight: "12rem", overflow: "auto" }}>
                       <Card.Title className="calli">{journey.name}</Card.Title>
                     </Card.Body>
-                    <Card.Footer>
-                      <small className="text-muted">
-                        {date.includes("in") ? "Starts " : "Ended "}
-                        {date}
-                      </small>
-                    </Card.Footer>
-                  </Card>
-                </Link>
+                  </Link>
+                  <Card.Footer>
+                    <small className="text-muted">
+                      {date.includes("in") ? "Starts " : "Ended "}
+                      {date}
+                    </small>
+                    <Button
+                      variant="outline-light"
+                      size="sm"
+                      style={{ float: "right" }}
+                      key={journey.id}
+                      onClick={() => props.onDelete(journey.id)}
+                    >
+                      <img src={bin} alt={"icon"} width="20" />
+                    </Button>
+                  </Card.Footer>
+                </Card>
               );
             })}
           </CardDeck>

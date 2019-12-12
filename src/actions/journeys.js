@@ -94,3 +94,19 @@ export const loadCountry = name => dispatch => {
     })
     .catch(console.error);
 };
+
+export const JOURNEY_DELETE_SUCCESS = "JOURNEY_DELETE_SUCCESS";
+
+const journeyDeleteSuccess = journeyId => ({
+  type: JOURNEY_DELETE_SUCCESS,
+  payload: journeyId
+});
+
+export const deleteJourney = id => dispatch => {
+  request
+    .delete(`${baseUrl}/journeys/${id}`)
+    .then(() => {
+      dispatch(journeyDeleteSuccess(id));
+    })
+    .catch(console.error);
+};
