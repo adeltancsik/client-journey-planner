@@ -29,7 +29,6 @@ export default function PackListContainer() {
   };
 
   const toggleDone = itemId => {
-    console.log("clicked, this is item id:", itemId);
     dispatch(editPack(itemId));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   };

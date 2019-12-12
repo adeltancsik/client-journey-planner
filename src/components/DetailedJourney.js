@@ -1,11 +1,12 @@
 import React from "react";
-import { Badge, Accordion, Card, ListGroup } from "react-bootstrap";
+import { Badge, Accordion, Card, ListGroup, Button } from "react-bootstrap";
 import moment from "moment";
 import { Timeline, TimelineItem } from "vertical-timeline-component-for-react";
 import AddToDoContainer from "./AddToDoContainer";
 import png from "../assets/plus-icon.png";
 import img from "../assets/list-icon.png";
 import icon from "../assets/info.png";
+import bin from "../assets/bin-icon.png";
 import PackListContainer from "./PackListContainer";
 
 export default function DetailedJourney(props) {
@@ -146,6 +147,17 @@ export default function DetailedJourney(props) {
                       }}
                       style={{ color: "#FDBE01" }}
                     >
+                      <Button
+                        variant="outline-light"
+                        type="submit"
+                        value="Submit"
+                        size="sm"
+                        style={{ float: "right" }}
+                        key={todo.id}
+                        onClick={() => props.onDelete(todo.id)}
+                      >
+                        <img src={bin} alt={"icon"} width="25" />
+                      </Button>
                       <h3 style={{ color: "#FFFFFF" }}>
                         <b>{todo.name}</b>
                       </h3>

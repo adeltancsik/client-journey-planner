@@ -36,3 +36,19 @@ export const createTodo = data => dispatch => {
     })
     .catch(console.error);
 };
+
+export const TODO_DELETE_SUCCESS = "TODO_DELETE_SUCCESS";
+
+const todoDeleteSuccess = todoId => ({
+  type: TODO_DELETE_SUCCESS,
+  payload: todoId
+});
+
+export const deleteToDo = id => dispatch => {
+  request
+    .delete(`${baseUrl}/todos/${id}`)
+    .then(() => {
+      dispatch(todoDeleteSuccess(id));
+    })
+    .catch(console.error);
+};

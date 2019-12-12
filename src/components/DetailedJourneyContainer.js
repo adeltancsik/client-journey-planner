@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { loadJourney } from "../actions/journeys";
-import { loadTodos } from "../actions/todos";
+import { loadTodos, deleteToDo } from "../actions/todos";
 import { loadPackList } from "../actions/packlist";
 import DetailedJourney from "./DetailedJourney";
 import { useDispatch, useSelector } from "react-redux";
@@ -31,12 +31,22 @@ export default function DetailedJourneyContainer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const onDelete = itemId => {
+    dispatch(deleteToDo(itemId));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
+
   return (
     <div className="detailedjourney">
       {!journey || !todos || !country ? (
         "Loading..."
       ) : (
-        <DetailedJourney journey={journey} todos={todos} country={country} />
+        <DetailedJourney
+          journey={journey}
+          todos={todos}
+          country={country}
+          onDelete={onDelete}
+        />
       )}
     </div>
   );
