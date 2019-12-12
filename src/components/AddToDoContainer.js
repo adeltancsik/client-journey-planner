@@ -9,7 +9,7 @@ export default function AddToDoContainer() {
 
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
-  const [journeyId] = useState(journey.id);
+  const [journeyId, setJourneyId] = useState("");
   const [time, setTime] = useState(moment());
 
   const dispatch = useDispatch();
@@ -20,10 +20,12 @@ export default function AddToDoContainer() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     setName("");
     setDescription("");
+    setJourneyId("");
   };
 
   const handleNameInput = event => {
     setName(event.target.value);
+    setJourneyId(journey.id);
   };
   const handleDescriptionInput = event => {
     setDescription(event.target.value);
