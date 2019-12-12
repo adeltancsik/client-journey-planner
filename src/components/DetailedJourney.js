@@ -31,7 +31,9 @@ export default function DetailedJourney(props) {
           <div className="pack-container">
             <Accordion id="pack">
               <Accordion.Toggle as={Badge} eventKey="0">
-                <img src={img} alt={"list-icon"} width="40" id="listicon" />
+                <div id="listicon">
+                  <img src={img} alt={"list-icon"} width="50" />
+                </div>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
                 <PackListContainer />
@@ -41,12 +43,9 @@ export default function DetailedJourney(props) {
           <div className="country-container">
             <Accordion id="country-info">
               <Accordion.Toggle as={Badge} eventKey="0">
-                <img
-                  src={icon}
-                  alt={"location-icon"}
-                  width="40"
-                  id="listicon"
-                />
+                <div id="listicon">
+                  <img src={icon} alt={"location-icon"} width="50" />
+                </div>
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
                 <ListGroup>
@@ -90,8 +89,8 @@ export default function DetailedJourney(props) {
               </Accordion.Collapse>
             </Accordion>
           </div>
-          <h1>
-            <Badge variant={"light"}>{props.journey.name}</Badge>
+          <h1 className="calli" style={{ textDecoration: "underline" }}>
+            {props.journey.name}
           </h1>
           <h4>Journey to {props.journey.country}</h4>
           {/* <img
@@ -158,10 +157,10 @@ export default function DetailedJourney(props) {
                       >
                         <img src={bin} alt={"icon"} width="25" />
                       </Button>
-                      <h3 style={{ color: "#FFFFFF" }}>
+                      <h3 style={{ color: "#FFFFFF" }} className="calli">
                         <b>{todo.name}</b>
                       </h3>
-                      <p>{todo.description}</p>
+                      <p className="calli">{todo.description}</p>
                     </TimelineItem>
                   );
                 })}

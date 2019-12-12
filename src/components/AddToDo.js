@@ -7,7 +7,7 @@ export default function AddToDo(props) {
     <div className="todoform">
       <Form onSubmit={props.onSubmit} className="container">
         <Row>
-          <Col md="4">
+          <Col md="5">
             <Accordion>
               <Accordion.Toggle as={Form.Group} eventKey="0">
                 <Form.Control

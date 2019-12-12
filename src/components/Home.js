@@ -22,7 +22,9 @@ export default function Home() {
         </div>
       ) : (
         <div>
-          <h2>Welcome {username}!</h2>
+          <h1 className="calli">
+            <b>Welcome {username}!</b>
+          </h1>
           <AddJourneyFormContainer />
           <JourneyList journeys={journeys} />
         </div>

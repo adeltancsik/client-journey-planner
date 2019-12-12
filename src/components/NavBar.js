@@ -1,9 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import png from "../assets/globe-icon.png";
-import { Badge } from "react-bootstrap";
+import { Badge, Button } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { emptyUser } from "../actions/user";
 
 export default function Navbar() {
+  const user = useSelector(state => state.user);
+
+  const dispatch = useDispatch();
+
+  const logOut = () => {
+    dispatch(emptyUser());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  };
   return (
     <div className="container">
       <nav
@@ -12,7 +22,23 @@ export default function Navbar() {
         }}
       >
         <Link to={`/`}>
-          <Badge variant="light">
+          <Badge
+            variant="light"
+            className="calli"
+            style={
+              !user
+                ? {
+                    transform: "scale(1.5)",
+                    marginTop: "2%",
+                    border: "solid #FDBE01 0.5px"
+                  }
+                : {
+                    transform: "scale(1.1)",
+                    marginTop: "1%",
+                    border: "solid #FDBE01 0.5px"
+                  }
+            }
+          >
             <b style={{ fontSize: "20px", padding: "8px" }}>
               J{" "}
               <img
@@ -25,6 +51,24 @@ export default function Navbar() {
               URNEY PLANNER
             </b>
           </Badge>
+          {user ? (
+            <Button
+              variant="outline-dark"
+              size="sm"
+              style={{
+                position: "absolute",
+                zIndex: "1",
+                right: "15%",
+                top: "1%"
+              }}
+              onClick={() => logOut()}
+            >
+              Log Out
+              {/* <img src={bin} alt={"icon"} width="25" /> */}
+            </Button>
+          ) : (
+            " "
+          )}
         </Link>
       </nav>
     </div>

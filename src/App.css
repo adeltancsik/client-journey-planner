@@ -3,7 +3,7 @@
 
 .App {
   text-align: center;
-  font-family: "Calligraffitti", cursive;
+  font-family: "Nunito", sans-serif;
   font-size: large;
   margin-top: 5px;
 }
@@ -13,12 +13,63 @@
   margin: 3px;
 }
 
-img {
-  transition: 0.3s;
+.calli,
+.packlist {
+  font-family: "Calligraffitti", cursive;
+}
+#packform {
+  font-family: "Nunito", sans-serif;
 }
 
+.journeyList,
+.signupform,
+.loginform {
+  background-color: #ffffff7a;
+  border-radius: 30px;
+}
+
+.home {
+  margin-top: 5%;
+}
+.signupform {
+  margin-top: 8%;
+}
+.journeyform {
+  margin-top: 3%;
+}
+
+body,
+html {
+  /* background-image: url("https://i.imgur.com/leJpZXT.png?1"); */
+  background-image: url("./assets/plane1.png"), url("./assets/plane2.png"),
+    url("./assets/plane4.png"), url("./assets/plane3.png"),
+    url("./assets/plane5.png");
+  background-position: right bottom, left bottom, center bottom, top left,
+    top right;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: 20%, 20%, 30%, 30%, 20%;
+  backface-visibility: hidden;
+  background-attachment: fixed;
+  transform: scale(-1, -1);
+}
+
+img,
+.card {
+  transition: 0.3s;
+  color: black;
+}
+
+.card:hover,
 img:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
+}
+
+#listicon {
+  padding: 30% 120% 30% 20%;
+  background: rgba(240, 236, 236, 0.61);
+  border-radius: 20px;
+  border: solid 1px;
 }
 
 .pack-container {
@@ -51,9 +102,6 @@ img:hover {
   margin-right: 15%;
   margin-left: 15%;
 }
-/* #pack {
-  justify-content: flex-start;
-} */
 
 .packlist {
   text-align: left;

@@ -3,7 +3,7 @@ import SignupForm from "./SignupForm";
 import { signup } from "../actions/user";
 import { useDispatch } from "react-redux";
 
-export default function SignupFormContainer() {
+export default function SignupFormContainer(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
@@ -17,6 +17,7 @@ export default function SignupFormContainer() {
     setEmail("");
     setPassword("");
     setUsername("");
+    props.history.push(`/`);
   };
 
   const handleEmailInput = event => {

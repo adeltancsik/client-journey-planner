@@ -54,3 +54,11 @@ export const signup = (email, password, username) => dispatch => {
     })
     .catch(console.error);
 };
+
+export const LOGOUT = "LOGOUT";
+
+export const emptyUser = () => {
+  return {
+    type: LOGOUT
+  };
+};

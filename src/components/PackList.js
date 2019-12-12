@@ -14,7 +14,7 @@ export default function PackList(props) {
         </ListGroup.Item>
         <ListGroup.Item as={Form} sm="1" onSubmit={props.onSubmit}>
           <Row sm="1">
-            <Col sm="9">
+            <Col sm="9" id="packform">
               <Form.Control
                 type="text"
                 name="name"
