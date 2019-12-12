@@ -4,6 +4,7 @@
 
 This project is a result of a Hackathon, where the challenge was to use at least one technology, that was not taught throughout the Code Academy course, by Codaisseur.
 The Hackathon's theme was travel.
+(Check out the technologies used at the end of the Readme.)
 
 This is a journey planner application, where a registered user can access the site's features, which are:
 
@@ -22,6 +23,7 @@ This is a journey planner application, where a registered user can access the si
 - **[How to install](#how-to-install)**
 - **[Features built so far and the routes](#features-built-so-far)**
 - **[Create React App docs](#create-react-app)**
+- **[Technologies](#technologies)**
 
 ## How to install
 
@@ -45,3 +47,16 @@ This is a journey planner application, where a registered user can access the si
 This project was scaffolded using the create-react-app cli.
 
 **[The standard create-react-app docs can be found in here](./create-react-app-docs.md)**
+
+## Technologies
+
+- "New" technologies used:
+  - react hooks
+  - moment.js
+  - react-input-moment
+  - react bootstrap
+  - vertical-timeline-component-for-react
+- Other technologies:
+  - react
+  - redux
+  - superagent
