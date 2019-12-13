@@ -42,7 +42,6 @@ export default function Navbar() {
             <b style={{ fontSize: "20px", padding: "8px" }}>
               J{" "}
               <img
-                // src="https://image.flaticon.com/icons/png/512/25/25694.png"
                 src={png}
                 width="50"
                 alt="home"
@@ -64,7 +63,6 @@ export default function Navbar() {
               onClick={() => logOut()}
             >
               Log Out
-              {/* <img src={bin} alt={"icon"} width="25" /> */}
             </Button>
           ) : (
             " "

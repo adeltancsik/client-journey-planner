@@ -1,6 +1,5 @@
 import React from "react";
 import { Form, Button, Row, Col } from "react-bootstrap";
-// import "./styling/LoginForm.css";
 
 export default function LoginForm(props) {
   return (

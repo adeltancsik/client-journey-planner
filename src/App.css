@@ -40,7 +40,6 @@
 
 body,
 html {
-  /* background-image: url("https://i.imgur.com/leJpZXT.png?1"); */
   background-image: url("./assets/plane1.png"), url("./assets/plane2.png"),
     url("./assets/plane4.png"), url("./assets/plane3.png"),
     url("./assets/plane5.png");

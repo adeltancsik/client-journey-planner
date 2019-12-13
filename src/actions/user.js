@@ -1,8 +1,6 @@
 import request from "superagent";
 import { baseUrl } from "../constants";
 
-//login should dispatch the JWT from the /login responsebody inside an action with type JWT
-
 export const JWT = "JWT";
 
 function jwt(payload) {
